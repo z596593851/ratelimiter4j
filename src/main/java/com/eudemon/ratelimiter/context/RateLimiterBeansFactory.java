@@ -80,7 +80,7 @@ public class RateLimiterBeansFactory {
    *         {@link RuleConfigSource}.
    */
   public RuleConfigSource obtainRuleConfigSource(RuleConfigSource ruleConfigSource) {
-    /* create according to SPI */
+    // 通过SPI获取限流配置解析器
     if (ruleConfigSource == null) {
       ruleConfigSource = ExtensionLoader.getExtension(RuleConfigSource.class, false);
     }
@@ -88,7 +88,6 @@ public class RateLimiterBeansFactory {
     /* create according to configuration */
     if (ruleConfigSource == null) {
       String sourceType = RateLimiterConfig.instance().getRuleConfigSourceType();
-      // TODO(zheng): ugly code, refactor it!
       if (sourceType.equals("zookeeper")) {
         ruleConfigSource = new ZookeeperRuleConfigSource();
       } else if (sourceType.equals("file")) {

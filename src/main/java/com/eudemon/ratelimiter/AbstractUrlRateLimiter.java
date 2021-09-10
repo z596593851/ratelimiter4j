@@ -46,9 +46,11 @@ public abstract class AbstractUrlRateLimiter implements UrlRateLimiter {
    * @param source the limit config source, if null, will use default rate limit config source.
    */
   public AbstractUrlRateLimiter(RuleConfigSource source) {
+    //获取操作限流配置的对象
     this.rateLimitRule = BEANS_CONTEXT.obtainUrlRateLimitRule(null);
-    /* load config from source and build rule. */
+    // 获取限流配置解析器
     source = BEANS_CONTEXT.obtainRuleConfigSource(source);
+    // 增加限流配置
     this.rateLimitRule.addRule(source.load());
 
     this.interceptorChain = BEANS_CONTEXT.obtainInterceptorChain(null);
@@ -124,17 +126,17 @@ public abstract class AbstractUrlRateLimiter implements UrlRateLimiter {
     boolean passed = false;
     Exception exception = null;
     try {
-      // TODO(zheng): validate url
       String urlPath = UrlUtils.getUrlPath(url);
-      // TODO(zheng): do not need get apilimit every time.
+      //获取限流配置
       apiLimit = rateLimitRule.getLimit(appId, urlPath);
       if (apiLimit == null) {
         logger.warn("no rate limit rule for api: {}", urlPath);
         return; // passed
       }
-
+      // 获取限流算法
       RateLimiter rateLimiter =
           getRateLimiterAlgorithm(appId, apiLimit.getApi(), apiLimit.getLimit());
+      // 执行限流操作
       passed = rateLimiter.tryAcquire();
       if (!passed) {
         StringBuilder builder = new StringBuilder();

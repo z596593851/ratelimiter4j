@@ -7,6 +7,9 @@ import com.eudemon.ratelimiter.exception.InternalErrorException;
 import com.eudemon.ratelimiter.exception.InvalidUrlException;
 import com.eudemon.ratelimiter.exception.OverloadException;
 
+/**
+ * 限流器接口
+ */
 public interface UrlRateLimiter {
 
   /**

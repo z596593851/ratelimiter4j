@@ -1,7 +1,7 @@
 package com.eudemon.ratelimiter.rule.source;
 
 /**
- * Interface to load rule configuration from different kinds of sources.
+ * 配置解析器，可以以file、zk等方式进行解析
  */
 public interface RuleConfigSource {
 

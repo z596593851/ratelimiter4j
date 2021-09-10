@@ -9,6 +9,7 @@ import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertSame;
 import static org.testng.Assert.fail;
 
+import com.eudemon.ratelimiter.exception.InvalidUrlException;
 import org.mockito.Mockito;
 import org.testng.annotations.Test;
 
@@ -172,8 +173,14 @@ public class UrlRateLimiterTest {
     assertSame(limiter1, limiter2);
   }
 
-  public void testGetRateLimiterAlgorithm_runOnMultiThreads() {
-    // TODO
+  public void testGetRateLimiterAlgorithm_runOnMultiThreads() throws InternalErrorException, InvalidUrlException, OverloadException {
+    UrlRateLimiter limiter=new MemoryUrlRateLimiter();
+    limiter.limit("pc","http://www.pc.com/get");
+  }
+
+  public static void main(String[] args) throws InternalErrorException, InvalidUrlException, OverloadException {
+    UrlRateLimiter limiter=new MemoryUrlRateLimiter();
+    limiter.limit("pc","http://www.pc.com/get");
   }
 
 }

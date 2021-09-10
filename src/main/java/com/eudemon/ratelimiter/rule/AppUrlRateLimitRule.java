@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Pattern;
 
 /**
- * Trie tree to store {@link ApiLimit} for one app. This class is thread-safe.
+ * Trie tree，存储app的 {@link ApiLimit}
  */
 public class AppUrlRateLimitRule {
 

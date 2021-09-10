@@ -6,7 +6,7 @@ import com.eudemon.ratelimiter.exception.InvalidUrlException;
 import com.eudemon.ratelimiter.rule.source.UniformRuleConfigMapping;
 
 /**
- * This interface stores rate limit rules and supply CRUD operation methods.
+ * 给app提供限流配置的CRUD操作，内部使用trie tree存储每个app的限流设置
  */
 public interface RateLimitRule {
 

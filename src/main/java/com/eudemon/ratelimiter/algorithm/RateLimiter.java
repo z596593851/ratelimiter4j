@@ -2,6 +2,9 @@ package com.eudemon.ratelimiter.algorithm;
 
 import com.eudemon.ratelimiter.exception.InternalErrorException;
 
+/**
+ * 限流算法接口
+ */
 public interface RateLimiter {
 
   /**

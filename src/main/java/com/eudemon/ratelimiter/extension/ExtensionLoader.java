@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.ServiceLoader;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * 通过SPI方式获取除file、zk以外的配置解析器
+ */
 public class ExtensionLoader {
 
   private static final ConcurrentHashMap<Class<?>, Object> CLASS_LOCKS = new ConcurrentHashMap<>();

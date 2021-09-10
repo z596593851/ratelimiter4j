@@ -1,7 +1,7 @@
 package com.eudemon.ratelimiter.rule;
 
 /**
- * The limit info for each API pattern.
+ * 限流配置类实体
  */
 public class ApiLimit {
 

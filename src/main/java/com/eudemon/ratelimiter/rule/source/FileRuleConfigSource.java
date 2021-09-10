@@ -14,13 +14,7 @@ import com.eudemon.ratelimiter.rule.parser.RuleConfigParser;
 import com.eudemon.ratelimiter.rule.parser.YamlRuleConfigParser;
 
 /**
- * This class is responsible for loading rule configuration from local file.
- * 
- * TODO(zheng): 
- * 1. support user specified rule config file path. 
- * 2. use ClassPathResource/FileSystemResource read file data.
- * 3. user specified file name. 
- * 4. support SPI RuleConfigParser
+ * 从本地读取限流配置文件，并且使用对应的parser进行解析
  */
 @Order(Order.HIGHEST_PRECEDENCE + 10)
 public class FileRuleConfigSource implements RuleConfigSource {
@@ -43,7 +37,7 @@ public class FileRuleConfigSource implements RuleConfigSource {
   }
 
   /**
-   * TODO(zheng): handle the case: multiply rule files.
+   * 从本地文件中解析限流配置
    */
   @Override
   public UniformRuleConfigMapping load() {

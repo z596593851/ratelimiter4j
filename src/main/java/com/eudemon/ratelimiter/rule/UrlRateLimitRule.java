@@ -12,7 +12,7 @@ import com.eudemon.ratelimiter.extension.Order;
 import com.eudemon.ratelimiter.rule.source.UniformRuleConfigMapping;
 
 /**
- * Rate limit rule which use trie tree to store limit rules. This class is thread-safe.
+ * 给app提供限流规则的CRUD操作，内部使用trie tree存储每个app的限流设置
  */
 @Order(Order.HIGHEST_PRECEDENCE + 10)
 public class UrlRateLimitRule implements RateLimitRule {
